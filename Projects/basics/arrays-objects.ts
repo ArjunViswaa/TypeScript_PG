@@ -16,12 +16,12 @@ possibleResults = [1, -1];
 
 
 let user: {
-    name: string;
-    age: number | string;
-    hobbies: string[];
+    name: string,
+    age: number | string,
+    hobbies: string[],
     role: {
-        description: string;
-        id: number;
+        description: string,
+        id: number,
     }
 } = {
     name: 'Arjun',
