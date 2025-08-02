@@ -12,9 +12,14 @@
 class User {
     public readonly hobbies: string[] = [];
     private _profession: string = '';
+    protected _firstname = '';
+    private _lastname = '';
+    protected _age = 0;
 
     constructor(public firstName: string, public lastName: string, private age: number) {
-
+        this._firstname = firstName;
+        this._lastname = lastName;
+        this._age = age;
     }
 
     get profession() {
@@ -26,7 +31,13 @@ class User {
     }
 
     get fullName() {
-        return this.firstName + " " + this.lastName;
+        return this._firstname + " " + this._lastname;
+    }
+
+    // static
+    static eid = 'USER';
+    static greet() {
+        console.log("Hello");
     }
 
     printAge() {
@@ -47,3 +58,31 @@ console.log(arjun.fullName);
 // Getters and Setters
 arjun.profession = 'Software Developer';
 console.log(arjun.profession);
+
+// Inheritance
+class Employee extends User {
+    constructor(public jobTitle: string) {
+        super("Employee", "1", 0);
+    }
+
+    work() {
+        // accessing protected values
+        console.log(this._firstname);
+    }
+}
+
+abstract class UIElement {
+    constructor(public identifier: string) {}
+
+    clone(targetLocation: string) {
+        // logic for duplicating UI element
+        console.log(targetLocation);
+    }
+}
+
+// const ui = new UIElement(); // cannot create instance of an abstract class
+class SideDrawerElement extends UIElement {
+    constructor(public identifier: string, public position: 'left | right') {
+        super(identifier);
+    }
+}
